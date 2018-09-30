@@ -36,9 +36,9 @@
 		<div style="border: 0px solid; height:150px ; width:500px ; position:relative;left:38%;top:-66.5%; color: gainsboro;" ng-app="myapp" ng-controller="myController" ng-init="isEnableSpec=0">
 			<form method="post">
 				原始链接&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" ng-model="entity.url" style="opacity: 0.4; color: blueviolet; width: 156px;"><br>
-				是否指定字符串<input type="checkbox" ng-model="isEnableSpec" ng-click="clearTag()" ng-true-value="1" style="opacity: 0.6; color: blueviolet; width: 25px;"><br>
+				是否指定字符<input type="checkbox" ng-model="isEnableSpec" ng-click="clearTag()" ng-true-value="1" style="opacity: 0.6; color: blueviolet; width: 60px;"><br>
 				<div ng-if="isEnableSpec==1">
-					输入指定字符串&ensp;<input type="text" ng-model="entity.tag" style="opacity: 0.4; color: blueviolet; width: 155px;">
+					输入指定字符&ensp;&ensp;&ensp;<input type="text" ng-model="entity.tag" placeholder="长度4~16个字符" style="opacity: 0.4; color: blueviolet; width: 155px;">
 				</div>
 
 				<div ng-if="isEnableSpec==0">
@@ -52,7 +52,7 @@
 					</select><br>
 
 
-					生成长度&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" name="length" ng-model="entity.length" style="opacity: 0.4; color: blueviolet; width: 156px;"><br>
+					生成长度&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" name="length" ng-model="entity.length" placeholder="长度4~16个字符" style="opacity: 0.4; color: blueviolet; width: 156px;"><br>
 					生成模式&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<select ng-model="entity.generator"  style="opacity: 0.4; color: blueviolet; width: 160px;">
 						<option value="0" selected>UUID方式</option>
 						<option value="1">MD5方式</option>
