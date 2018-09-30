@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wangjiaxun.dao.ShortUrlMapper">
+	<insert id="save" parameterType="com.wangjiaxun.entity.ShortUrl">
+        insert into shorturl (tag,url,count,createDate) values (#{tag},#{url},#{count},#{createDate});
+    </insert>
+    <select id="selectByTag" parameterType="string" resultType="com.wangjiaxun.entity.ShortUrl">
+        select * from shorturl where tag = #{tag};
+    </select>
+    <update id="updateCouent" parameterType="com.wangjiaxun.entity.ShortUrl">
+        UPDATE shorturl set tag=#{tag},url=#{url},count=#{count},createDate=#{createDate} where id=#{id}
+    </update>
+</mapper>

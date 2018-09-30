@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script>
+        var app=angular.module("myapp",[]);
+        app.controller('myController' ,function($scope,$http){
+            $scope.submitform=function () {
+                $http.post('/generateShortUrl.do',$scope.entity).success(function(response){
+                    alert(response.msg);
+                    $scope.entity.tag=response.data;
+                });
+            }
+        })
+    </script>
+
+</head>
+<body>
+<div ng-app="myapp" ng-controller="myController" ng-init="isEnableSpec=0">
+<form method="post">
+    原始连接<input type="text"  ng-model="entity.url"><br>
+
+    是否指定字符串<input type="checkbox"  ng-model="isEnableSpec" ng-true-value="1"><br>
+    <div ng-if="isEnableSpec==1">
+        <input type="text" ng-model="entity.tag">
+    </div>
+
+    <div ng-if="isEnableSpec==0">
+        选择字符集<select name="type" ng-model="entity.type">
+                    <option value="0">纯数字</option>
+                    <option value="1">小写字母</option>
+                    <option value="2">大写字母</option>
+                    <option value="3">大小写字母混合</option>
+                    <option value="4" selected>数字和大小写字母混合</option>
+                </select><br>
+        生成长度<input type="text" name="length" ng-model="entity.length"><br>
+        生成模式<select   ng-model="entity.generator">
+                    <option value="0" selected>UUID方式</option>
+                    <option value="1">MD5方式</option>
+                </select>
+    </div>
+
+    <input type="button" ng-click="submitform()" value="生成">
+
+</form>
+
+    生成的短链接：{{entity.tag}}
+</div>
+</body>
+</html>
